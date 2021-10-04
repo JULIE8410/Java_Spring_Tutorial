@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class MemoryMemberRepository implements MemberRepository {
 
-    Map<Long, Member> store = new HashMap<>();
+    private static Map<Long, Member> store = new HashMap<>();
 
     @Override
     public void save(Member member) {
@@ -16,4 +16,7 @@ public class MemoryMemberRepository implements MemberRepository {
     public Member findById(Long memberId) {
         return store.get(memberId);
     }
+
+
+
 }

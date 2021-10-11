@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.*;
 public class SingletonTest {
 
     @Test
-    @DisplayName("DI container without Spring")
+    @DisplayName("DI (pure) container without Spring")
     void pureContainer(){
 
         AppConfig appConfig = new AppConfig();
@@ -33,7 +33,7 @@ public class SingletonTest {
     }
 
     @Test
-    @DisplayName("Applied singleton pattern")
+    @DisplayName("Using objects applied singleton pattern")
     void singletonService(){
         SingletonService instance1 = SingletonService.getInstance();
         SingletonService instance2 = SingletonService.getInstance();
@@ -61,6 +61,7 @@ public class SingletonTest {
 
         assertThat(memberService1).isSameAs(memberService2);
     }
+
 
 
 }

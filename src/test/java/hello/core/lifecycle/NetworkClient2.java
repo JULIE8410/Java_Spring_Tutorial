@@ -1,13 +1,13 @@
 package hello.core.lifecycle;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
-public class NetworkClient implements InitializingBean, DisposableBean {
+public class NetworkClient2 {
 
     private String url;
 
-    public NetworkClient() {
+    public NetworkClient2() {
         System.out.println("Calling constructor url = " + url);
 
     }
@@ -30,16 +30,16 @@ public class NetworkClient implements InitializingBean, DisposableBean {
         System.out.println("close " + url);
     }
 
-    @Override
-    public void afterPropertiesSet() {
-        System.out.println("NetworkClient.afterPropertiesSet");
+    @PostConstruct
+    public void init() {
+        System.out.println("NetworkClient.init");
         connect();
         call("Initial connection message");
     }
 
-    @Override
-    public void destroy() {
-        System.out.println("NetworkClient.destroy");
+    @PreDestroy
+    public void close()  {
+        System.out.println("NetworkClient.close");
         disconnect();
     }
 }
